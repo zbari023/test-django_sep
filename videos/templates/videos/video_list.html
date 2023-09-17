@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>Video List</h1>
+    {% for video in object_list %}
+        <div>
+            <h3>{{ video.title }}</h3>
+            <p>{{ video.description }}</p>
+            <p>Views: {{ video.view_count }}</p>
+            <p>Likes: {{ video.like_count }}</p>
+            <p>Dislikes: {{ video.dislike_count }}</p>
+            <p>Uploaded by: {{ video.uploader.username }}</p>
+            <a href="{{ video.url }}">Watch Video</a>
+            <h4>Comments:</h4>
+            {% for comment in video.comment_set.all %}
+                <p>{{ comment.content }}</p>
+                <p>Commented by: {{ comment.user.username }}</p>
+                <p>Commented at: {{ comment.created_at }}</p>
+            {% endfor %}
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>

@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
+from videos.views import VideoList
+from videos.api import VideoListAPI
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('video/',VideoList.as_view()),
+    path('video/api/list' , VideoListAPI.as_view()),
 ]
 
 
